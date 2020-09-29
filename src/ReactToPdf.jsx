@@ -27,7 +27,9 @@ class ReactToPdf extends PureComponent {
       const imgData = canvas.toDataURL('image/jpeg');
       const pdf = new JsPdf(options);
       pdf.addImage(imgData, 'JPEG', x, y);
-      pdf.save(filename);
+      if (filename) {
+        pdf.save(filename);
+      }
       if (onComplete) onComplete(pdf.output());
     });
   }
@@ -53,7 +55,7 @@ ReactToPdf.propTypes = {
 };
 
 ReactToPdf.defaultProps = {
-  filename: 'download.pdf',
+  filename: undefined,
   options: undefined,
   x: 0,
   y: 0,
