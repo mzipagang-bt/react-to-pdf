@@ -28,7 +28,7 @@ class ReactToPdf extends PureComponent {
       const pdf = new JsPdf(options);
       pdf.addImage(imgData, 'JPEG', x, y);
       pdf.save(filename);
-      if (onComplete) onComplete();
+      if (onComplete) onComplete(pdf.output());
     });
   }
 
